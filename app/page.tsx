@@ -2,6 +2,8 @@ import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Features } from "@/components/sections/features";
 import { Hero } from "@/components/sections/hero";
+import { RecentlyViewed } from "@/components/sections/recently-viewed";
+import { Shop } from "@/components/sections/shop";
 import { Specs } from "@/components/sections/specs";
 import { Story } from "@/components/sections/story";
 
@@ -14,6 +16,8 @@ export default function Home() {
         <Features />
         <Specs />
         <Story />
+        <Shop />
+        <RecentlyViewed />
       </main>
       <Footer />
     </div>
