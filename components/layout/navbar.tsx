@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Heart, Leaf, Menu, ShoppingCart } from "lucide-react";
+import { Heart, Leaf, Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,7 +13,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { CartDrawer } from "@/components/cart/cart-drawer";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { useHasHydrated, useStore } from "@/lib/store";
 
 const NAV_LINKS = [
   { label: "Tính năng", href: "#features" },
@@ -23,6 +25,10 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const hasHydrated = useHasHydrated();
+  const wishlistCount = useStore((state) => state.wishlist.length);
+  const count = hasHydrated ? wishlistCount : 0;
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -46,12 +52,22 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon" aria-label="Sản phẩm yêu thích" className="relative">
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Sản phẩm yêu thích"
+            className="relative"
+            render={<Link href="#shop" />}
+            nativeButton={false}
+          >
             <Heart className="size-5" />
+            {count > 0 && (
+              <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-primary-foreground">
+                {count}
+              </span>
+            )}
           </Button>
-          <Button variant="ghost" size="icon" aria-label="Giỏ hàng" className="relative">
-            <ShoppingCart className="size-5" />
-          </Button>
+          <CartDrawer />
           <ThemeToggle />
 
           <Sheet>
