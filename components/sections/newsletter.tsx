@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { trackClick } from "@/lib/analytics";
 import { subscribeSchema, type SubscribeInput } from "@/lib/validation";
 
 export function Newsletter() {
@@ -21,10 +22,21 @@ export function Newsletter() {
     resolver: zodResolver(subscribeSchema),
   });
 
-  // UI-only for now — wired to a real /api/subscribe + webhook
   async function onSubmit(data: SubscribeInput) {
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    console.log("subscribe", data);
+    trackClick("newsletter_submit");
+
+    const response = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const body = await response.json().catch(() => null);
+      toast.error(body?.error ?? "Có lỗi xảy ra, vui lòng thử lại.");
+      return;
+    }
+
     setSubmitted(true);
     toast("Cảm ơn bạn đã đăng ký nhận tin!");
     reset();

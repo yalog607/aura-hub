@@ -6,6 +6,7 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { WishlistButton } from "@/components/cart/wishlist-button";
+import { trackClick } from "@/lib/analytics";
 import { formatPrice, PRODUCTS } from "@/lib/products";
 import { useStore } from "@/lib/store";
 
@@ -60,6 +61,7 @@ export function Shop() {
                   size="sm"
                   onClick={() => {
                     addToCart(product.id);
+                    trackClick(`add_to_cart_${product.id}`);
                     toast(`Đã thêm ${product.name} vào giỏ hàng`);
                   }}
                 >

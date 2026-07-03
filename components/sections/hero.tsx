@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Battery, ShieldCheck, Wind } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { trackClick } from "@/lib/analytics";
 
 const STATS = [
   { label: "Thiết bị tương thích", value: "50+" },
@@ -38,7 +41,12 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button size="lg" nativeButton={false} render={<Link href="#shop" />}>
+            <Button
+              size="lg"
+              nativeButton={false}
+              render={<Link href="#shop" />}
+              onClick={() => trackClick("hero_preorder")}
+            >
               Đặt trước ngay
               <ArrowRight className="size-4" />
             </Button>
@@ -47,6 +55,7 @@ export function Hero() {
               variant="outline"
               nativeButton={false}
               render={<Link href="#features" />}
+              onClick={() => trackClick("hero_explore_features")}
             >
               Khám phá tính năng
             </Button>

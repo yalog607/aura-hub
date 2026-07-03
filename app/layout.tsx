@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -41,6 +42,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <AnalyticsTracker />
         </ThemeProvider>
       </body>
     </html>
