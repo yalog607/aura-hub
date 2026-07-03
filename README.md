@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AURA Hub
 
-## Getting Started
+Sản phẩm: **AURA Hub** — trung tâm điều khiển nhà thông minh tập trung vào sức khỏe & môi trường sống: theo dõi chất lượng không khí, tự động hoá thói quen sinh hoạt, an ninh chủ động và tiết kiệm năng lượng.
 
-First, run the development server:
+- 🔗 **Live demo**: https://aurahub.yalina.io.vn
+- 📦 **Repo**: https://github.com/yalog607/aura-hub
+
+## Tech stack
+
+- [Next.js](https://nextjs.org) 16 (App Router) + TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com) (Base UI)
+- [Framer Motion](https://motion.dev) (`LazyMotion`/`m` — scroll animation, parallax)
+- [Zustand](https://zustand.docs.pmnd.rs) + `persist` (localStorage) — giỏ hàng, wishlist, sản phẩm đã xem
+- [next-themes](https://github.com/pacocoursey/next-themes) — Dark Mode
+- [react-hook-form](https://react-hook-form.com) + [Zod](https://zod.dev) — validate form
+
+## Cấu trúc trang
+
+Hero · Features (bento grid) · Tech Specs · Story (scrollytelling + parallax) · Shop (mini e-commerce) · Recently Viewed · Testimonials · Newsletter (form đăng ký nhận tin)
+
+## Yêu cầu bắt buộc đã đáp ứng
+
+- Hero Section, Features, Tech Specs, Form đăng ký nhận tin
+- Responsive mượt Desktop/Mobile
+- SEO: Title, Description, Open Graph, Twitter Card, `sitemap.xml`, `robots.txt`
+- Performance: PageSpeed Insights (Mobile) ≥ 85/100
+- Git/GitHub: commit rõ ràng theo từng phần, deploy Vercel
+
+## Chạy dự án local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mở [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Biến môi trường
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Tạo file `.env.local` (xem mẫu ở [`.env.example`](.env.example)):
 
-## Learn More
+```bash
+# Discord webhook nhận dữ liệu đăng ký nhận tin
+SUBSCRIBE_WEBHOOK_URL=
 
-To learn more about Next.js, take a look at the following resources:
+# Discord webhook nhận sự kiện hành vi người dùng (click, scroll)
+TRACK_WEBHOOK_URL=
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tạo webhook tại: Discord → Server Settings → Integrations → Webhooks → New Webhook → Copy Webhook URL. Có thể dùng chung 1 URL cho cả 2 biến hoặc tách 2 kênh riêng.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Scripts
 
-## Deploy on Vercel
+```bash
+npm run dev      # chạy dev server
+npm run build    # build production
+npm run start    # chạy bản production đã build
+npm run lint     # kiểm tra lint
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy trên [Vercel](https://vercel.com):
+
+1. Import repo GitHub vào Vercel.
+2. Thêm biến môi trường `SUBSCRIBE_WEBHOOK_URL`, `TRACK_WEBHOOK_URL` (và tuỳ chọn `NEXT_PUBLIC_SITE_URL` trỏ tới domain thật để metadata/SEO chính xác).
+3. Deploy — Vercel tự build bằng `npm run build`.
