@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { Heart, Leaf, Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -32,12 +31,12 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="#hero" className="flex items-center gap-2 font-semibold tracking-tight">
+        <a href="#hero" className="flex items-center gap-2 font-semibold tracking-tight">
           <span className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
             <Leaf className="size-4" />
           </span>
           <span className="text-lg">AURA Hub</span>
-        </Link>
+        </a>
 
         <nav className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
@@ -57,7 +56,7 @@ export function Navbar() {
             size="icon"
             aria-label="Sản phẩm yêu thích"
             className="relative"
-            render={<Link href="#shop" />}
+            render={<a href="#shop" />}
             nativeButton={false}
           >
             <Heart className="size-5" />
