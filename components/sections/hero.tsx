@@ -24,7 +24,7 @@ export function Hero() {
       />
 
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 md:items-center md:py-24 lg:px-8">
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div>
           <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
             AURA Hub · Smart Home cho lối sống lành mạnh
           </span>
@@ -71,7 +71,7 @@ export function Hero() {
           </dl>
         </div>
 
-        <div className="relative animate-in fade-in zoom-in-95 duration-700 delay-150">
+        <div className="relative">
           <div className="relative mx-auto flex aspect-square max-w-sm items-center justify-center">
             <div
               aria-hidden
