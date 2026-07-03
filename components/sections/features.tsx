@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   BatteryCharging,
   Layers,
@@ -78,7 +78,7 @@ export function Features() {
 
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:grid-rows-[repeat(3,minmax(0,auto))] lg:grid-cols-3">
           {FEATURES.map((feature, index) => (
-            <motion.div
+            <m.div
               key={feature.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ export function Features() {
                   {feature.description}
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

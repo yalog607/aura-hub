@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Star } from "lucide-react";
 
 type Testimonial = {
@@ -49,7 +49,7 @@ export function Testimonials() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {TESTIMONIALS.map((testimonial, index) => (
-            <motion.figure
+            <m.figure
               key={testimonial.name}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export function Testimonials() {
                   <p className="text-xs text-muted-foreground">{testimonial.role}</p>
                 </div>
               </figcaption>
-            </motion.figure>
+            </m.figure>
           ))}
         </div>
       </div>
