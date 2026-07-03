@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { HeartPulse, Home, Sparkles, Wifi, type LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -70,23 +70,23 @@ export function Story() {
         <div className="mt-12 grid gap-12 md:grid-cols-2 md:items-start">
           <div className="relative md:sticky md:top-24 md:self-start">
             <div className="relative mx-auto flex aspect-square max-w-sm items-center justify-center overflow-hidden rounded-[2.5rem] border border-border/60 bg-card">
-              <motion.div
+              <m.div
                 aria-hidden
                 style={{ y: blobY1 }}
                 className="absolute -left-10 -top-10 size-40 rounded-full bg-primary/20 blur-2xl"
               />
-              <motion.div
+              <m.div
                 aria-hidden
                 style={{ y: blobY2 }}
                 className="absolute -right-10 -bottom-10 size-48 rounded-full bg-chart-2/20 blur-2xl"
               />
 
-              <motion.div
+              <m.div
                 style={{ rotate: coreRotate, scale: coreScale }}
                 className="relative flex size-40 items-center justify-center rounded-full border border-primary/30 bg-primary/10"
               >
                 <Home className="size-14 text-primary" />
-              </motion.div>
+              </m.div>
             </div>
 
             <div className="mx-auto mt-6 flex max-w-sm items-center justify-center gap-2">
@@ -107,7 +107,7 @@ export function Story() {
 
           <ol className="space-y-8">
             {STEPS.map((step, index) => (
-              <motion.li
+              <m.li
                 key={step.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -127,7 +127,7 @@ export function Story() {
                     {step.description}
                   </p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
           </ol>
         </div>
@@ -149,7 +149,7 @@ function ProgressDot({
 
   return (
     <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
-      <motion.span
+      <m.span
         style={{ width }}
         className={cn("block h-full rounded-full bg-primary")}
       />

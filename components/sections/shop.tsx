@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -32,7 +32,7 @@ export function Shop() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PRODUCTS.map((product, index) => (
-            <motion.div
+            <m.div
               key={product.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export function Shop() {
                   Thêm vào giỏ
                 </Button>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

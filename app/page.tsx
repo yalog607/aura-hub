@@ -1,3 +1,5 @@
+import { LazyMotion, domAnimation } from "framer-motion";
+
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { Features } from "@/components/sections/features";
@@ -15,12 +17,14 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
-        <Features />
-        <Specs />
-        <Story />
-        <Shop />
-        <RecentlyViewed />
-        <Testimonials />
+        <LazyMotion features={domAnimation} strict>
+          <Features />
+          <Specs />
+          <Story />
+          <Shop />
+          <RecentlyViewed />
+          <Testimonials />
+        </LazyMotion>
         <Newsletter />
       </main>
       <Footer />
