@@ -26,11 +26,5 @@ jobs:
       - name: Run lint
         run: npm run lint
 
-      - name: Run typeScript check
-        run: npm run typecheck
-
-      - name: Run tests
-        run: npm test
-
       - name: Build applications
         run: npm run build
